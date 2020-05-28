@@ -48,7 +48,7 @@ function refreshHighScores() {
 }
 
 function scoringLines(l) { 
-	var s = 0;
+	let s = 0;
 	if (l === 1) { 
 		s = 40;
 	} else if (l === 2) { 

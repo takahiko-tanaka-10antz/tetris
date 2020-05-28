@@ -1,9 +1,9 @@
 function scanLines() { 
 	LINES = "";
 	LINES_BLINK_COUNTER = 0;
-	for (var y = LINES_MAX_Y, ymax = 0; y > ymax; y --) { 
-		var line = true;
-		for (var x = 1, xmax = LINES_MAX_X + 1; x < xmax; x ++) { 
+	for (let y = LINES_MAX_Y, ymax = 0; y > ymax; y --) {
+		let line = true;
+		for (let x = 1, xmax = LINES_MAX_X + 1; x < xmax; x ++) {
 			if ($('#board').find(".square[id='s-" + y + "-" + x + "'][class*='piece']").length < 1) { 
 				line = false;
 				break;
@@ -32,8 +32,8 @@ function scanLines() {
 
 function blinkLines() { 
 	LINES_BLINK_COUNTER ++;
-	var lines = LINES.split(",");
-	for (var i = 0, imax = lines.length; i < imax; i ++) { 
+	let lines = LINES.split(",");
+	for (let i = 0, imax = lines.length; i < imax; i ++) {
 		if ( $('#board').find(".square[id^='s-" + lines[i] + "-'][class*='piece']").attr("class").indexOf("erase") > -1 ) { 
 			$('#board').find(".square[id^='s-" + lines[i] + "-'][class*='piece']").removeClass("erase");
 		} else { 
@@ -52,12 +52,12 @@ function blinkLines() {
 	}
 }
 
-function eraseLines() { 
-	var lines = LINES.split(",");
-	for (var i = 0, imax = lines.length; i < imax; i ++) { 
+function eraseLines() {
+	let lines = LINES.split(",");
+	for (let i = 0, imax = lines.length; i < imax; i ++) {
 	
-		for (var l = lines[i], lmax = LINES_MAX_Y; l < lmax; l ++) { 
-			for (var x = 1, xmax = LINES_MAX_X + 1; x < xmax; x ++) { 
+		for (let l = lines[i], lmax = LINES_MAX_Y; l < lmax; l ++) {
+			for (let x = 1, xmax = LINES_MAX_X + 1; x < xmax; x ++) {
 				$('#board').find(".square[id='s-" + l + "-" + x + "']").removeClass("erase");
 				$('#board').find(".square[id='s-" + l + "-" + x + "']").attr("class", $('#board').find(".square[id='s-" + (parseInt(l) + 1) + "-" + x + "']").attr("class"));
 				if ( $('#board').find(".square[id='s-" + (parseInt(l) + 1) + "-" + x + "']").attr("piece-id")) { 
@@ -73,7 +73,7 @@ function eraseLines() {
 			
 			}
 		}
-		for (var x = 1, xmax = LINES_MAX_X + 1; x < xmax; x ++) { 
+		for (let x = 1, xmax = LINES_MAX_X + 1; x < xmax; x ++) {
 			$('#board').find(".square[id='s-" + LINES_MAX_Y + "-" + x + "']").attr("class", "square");
 			$('#board').find(".square[id='s-" + LINES_MAX_Y + "-" + x + "']").removeAttr("piece-id");
 			$('#board').find(".square[id='s-" + LINES_MAX_Y + "-" + x + "']").removeAttr("piece-catch");

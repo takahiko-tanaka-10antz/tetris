@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="ja">
 
 <head>
+    <meta charset="utf-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="css/tetris.css"/>
@@ -20,13 +21,13 @@
     <script type="text/javascript">
 
         function initBoard() {
-            for (var y = LINES_MAX_Y, ymax = 0; y > ymax; y--) {
-                for (var x = 1, xmax = LINES_MAX_X + 1; x < xmax; x++) {
+            for (let y = LINES_MAX_Y, ymax = 0; y > ymax; y--) {
+                for (let x = 1, xmax = LINES_MAX_X + 1; x < xmax; x++) {
                     $('#board').append('<div class="square" id="s-' + y + '-' + x + '"></div>');
                 }
             }
-            for (var y = 4, ymax = 0; y > ymax; y--) {
-                for (var x = 1, xmax = 5; x < xmax; x++) {
+            for (let y = 4, ymax = 0; y > ymax; y--) {
+                for (let x = 1, xmax = 5; x < xmax; x++) {
                     $('#board-next').append('<div class="square" id="next-s-' + y + '-' + x + '"></div>');
                 }
             }
@@ -164,7 +165,7 @@
             $(".sound").click(function (e) {
                 e.stopPropagation();
 
-                var sound = $(this).attr("data-sound");
+                let sound = $(this).attr("data-sound");
                 if (sound === "on") {
                     $(".sound").attr("data-sound", "off");
                     $(".sound").find("img").attr("src", "img/sound-off.png");
@@ -249,7 +250,7 @@
             });
 
             function simulateKeydown(code) {
-                var e = jQuery.Event("keydown");
+                let e = jQuery.Event("keydown");
                 e.keyCode = code;
                 jQuery('body').trigger(e);
             }
@@ -267,16 +268,16 @@
                             if ($("#control").css("display") === "none") {
                                 if (e.keyCode === 8 && ENTER_NAME_POSITION > 0) {
                                     ENTER_NAME_POSITION--;
-                                    var n = $('#home #name' + ENTER_NAME).html();
+                                    let n = $('#home #name' + ENTER_NAME).html();
                                     n = n.replaceAt(ENTER_NAME_POSITION, ENTER_NAME_DEFAULT_CHAR);
                                     $('#home #name' + ENTER_NAME).html(n);
                                 } else if (e.keyCode >= 65 && e.keyCode <= 90 && ENTER_NAME_POSITION < ENTER_NAME_MAX_CHAR) {
-                                    var n = $('#home #name' + ENTER_NAME).html();
+                                    let n = $('#home #name' + ENTER_NAME).html();
                                     n = n.replaceAt(ENTER_NAME_POSITION, String.fromCharCode(e.keyCode));
                                     $('#home #name' + ENTER_NAME).html(n);
                                     ENTER_NAME_POSITION++;
                                 } else if (e.keyCode === 13) {
-                                    var n = $('#home #name' + ENTER_NAME).html();
+                                    let n = $('#home #name' + ENTER_NAME).html();
                                     $('#home #name' + ENTER_NAME).html(n.split(ENTER_NAME_DEFAULT_CHAR).join(''));
                                     eval('SCORE_' + ENTER_NAME + '_NAME = n.split("' + ENTER_NAME_DEFAULT_CHAR + '").join("");');
                                     clearInterval(ENTER_NAME_TIMER);
@@ -316,11 +317,11 @@
                                     nextMasked();
                                 }
 
-                                var c = getPieceControlId();
-                                var y = getPieceControlPositionY();
-                                var x = getPieceControlPositionX();
-                                var p = getPieceControlType();
-                                var m = getPieceControlRotate();
+                                let c = getPieceControlId();
+                                let y = getPieceControlPositionY();
+                                let x = getPieceControlPositionX();
+                                let p = getPieceControlType();
+                                let m = getPieceControlRotate();
 
                                 if (e.keyCode === 40) {
                                     if ($("#control").css("display") === "none") {
@@ -331,8 +332,8 @@
                                     pieceDown();
                                 } else {
 
-                                    var moveSound = false;
-                                    var rotateSound = false;
+                                    let moveSound = false;
+                                    let rotateSound = false;
                                     if (e.keyCode === 39) {
                                         x++;
                                         moveSound = true;
@@ -370,7 +371,7 @@
         });
     </script>
 
-    <title>Lucio PANEPINTO - Tetris</title>
+    <title>Tetris</title>
 </head>
 
 <body>
@@ -382,31 +383,31 @@
     <table align="center" border="0" cellPadding="2" cellSpacing="0">
         <tbody>
         <tr>
-            <td>Arrow Left / Arrow Right :</td>
-            <td>Move Left / Move Right</td>
+            <td>左 / 右:</td>
+            <td>左へ動く/右へ動く</td>
         </tr>
         <tr>
-            <td>Arrow Down :</td>
-            <td>Move Down</td>
+            <td>下 :</td>
+            <td>下へ動く</td>
         </tr>
         <tr>
-            <td>Arrow Up, CTRL, Space, S :</td>
-            <td>Rotate Right</td>
+            <td>上, CTRL, Space, S:</td>
+            <td>右回転</td>
         </tr>
         <tr>
-            <td>Q, A :</td>
-            <td>Rotate Left</td>
+            <td>Q, A:</td>
+            <td>左回転</td>
         </tr>
         <tr>
             <td colspan="2"></td>
         </tr>
         <tr>
-            <td>ESCAPE, ENTER, P :</td>
-            <td>PAUSE</td>
+            <td>ESCAPE, ENTER, P:</td>
+            <td>一時停止</td>
         </tr>
         <tr>
-            <td>DELETE, BACKSPACE :</td>
-            <td>SHOW / HIDE NEXT PIECE</td>
+            <td>DELETE, BACKSPACE:</td>
+            <td>次のピースを表示/次のピースを非表示</td>
         </tr>
         </tbody>
     </table>
@@ -414,15 +415,15 @@
 
 <div id="home">
     <h1>Tetris</h1>
-    <span class="start invisible">- Press a button to start -</span>
+    <span class="start invisible">- ボタンを押すとスタート -</span>
     <div id="scores">
-        <h2>High scores</h2>
+        <h2>スコア</h2>
         <table align="center" border="0" cellPadding="2" cellSpacing="0">
             <thead>
             <tr>
-                <th>Rank</th>
-                <th>Score</th>
-                <th>Name</th>
+                <th>ランク</th>
+                <th>スコア</th>
+                <th>名前</th>
             </tr>
             </thead>
             <tbody>

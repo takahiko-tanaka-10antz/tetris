@@ -1,33 +1,33 @@
-var DROP_SOUND = new buzz.sound([
+let DROP_SOUND = new buzz.sound([
     "./sound/drop.ogg",
     "./sound/drop.mp3" 
 ]);
-var LINE_SOUND = new buzz.sound([
+let LINE_SOUND = new buzz.sound([
     "./sound/line.ogg",
     "./sound/line.mp3" 
 ]);
-var TETRIS_SOUND = new buzz.sound([
+let TETRIS_SOUND = new buzz.sound([
     "./sound/tetris.ogg",
     "./sound/tetris.mp3" 
 ]);
-var MOVE_SOUND = new buzz.sound([
+let MOVE_SOUND = new buzz.sound([
     "./sound/move.ogg",
     "./sound/move.mp3" 
 ]);
-var ROTATE_SOUND = new buzz.sound([
+let ROTATE_SOUND = new buzz.sound([
     "./sound/rotate.ogg",
     "./sound/rotate.mp3" 
 ]);
-var GAMEOVER_SOUND = new buzz.sound([
+let GAMEOVER_SOUND = new buzz.sound([
     "./sound/gameover.ogg",
     "./sound/gameover.mp3" 
 ]);
-var THEME_SOUND = new buzz.sound([
+let THEME_SOUND = new buzz.sound([
     "./sound/theme.ogg",
     "./sound/theme.mp3" 
 ]);
 
-var GROUP_SOUND = new buzz.group([ DROP_SOUND, LINE_SOUND, TETRIS_SOUND, MOVE_SOUND, ROTATE_SOUND, GAMEOVER_SOUND, THEME_SOUND ]);
+let GROUP_SOUND = new buzz.group([ DROP_SOUND, LINE_SOUND, TETRIS_SOUND, MOVE_SOUND, ROTATE_SOUND, GAMEOVER_SOUND, THEME_SOUND ]);
 
 function isAvailableSound() { 
 	return !($("#sound").css("display") === "none");

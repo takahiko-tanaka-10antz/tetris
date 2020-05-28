@@ -1,8 +1,8 @@
 function drawPiece(p, x, y, m, id) { 
-	var pieceId = (id) ? PIECE_CONTROL : p + "" + (new Date()).getTime();
+	let pieceId = (id) ? PIECE_CONTROL : p + "" + (new Date()).getTime();
 	
-	var squares = getPieceSquares(p, x, y, m).split(",");
-	for (var i = 0, imax = squares.length; i < imax; i ++) { 
+	let squares = getPieceSquares(p, x, y, m).split(",");
+	for (let i = 0, imax = squares.length; i < imax; i ++) { 
 		if (i === 0) { 
 			$('#board').find(".square[id='" + squares[i] + "']").addClass("piece" + p).attr("piece-id", pieceId).attr("piece-catch", "yes").attr("piece-move", m);
 		} else { 
@@ -17,8 +17,8 @@ function drawPieceNext(p) {
 	$('#board-next').find('.square').attr("class", "square");
 	if (PIECE_NEXT_MASKED) $('#board-next').find('.square').addClass("masked");
 
-	var squares = getPieceSquares(p, 3, 2, 1).split(",");
-	for (var i = 0, imax = squares.length; i < imax; i ++) { 
+	let squares = getPieceSquares(p, 3, 2, 1).split(",");
+	for (let i = 0, imax = squares.length; i < imax; i ++) { 
 		$('#board-next').find(".square[id='next-" + squares[i] + "']").addClass("piece" + p);
 	}
 }
@@ -40,11 +40,11 @@ function getPieceControlRotate() {
 }
 
 function pieceDown() { 
-	var c = getPieceControlId();
-	var y = getPieceControlPositionY();
-	var x = getPieceControlPositionX();
-	var p = getPieceControlType();
-	var m = getPieceControlRotate();
+	let c = getPieceControlId();
+	let y = getPieceControlPositionY();
+	let x = getPieceControlPositionX();
+	let p = getPieceControlType();
+	let m = getPieceControlRotate();
 			
 	if (canMove(p, x, y - 1, m, PIECE_CONTROL)) { 
 		$('#board').find(".square[piece-id='" + PIECE_CONTROL + "']").removeClass("piece" + p).removeAttr("piece-id").removeAttr("piece-catch").removeAttr("piece-move");
@@ -120,8 +120,8 @@ function nextMasked() {
 
 function canMove(p, x, y, m, id) { 
 
-	var squares = getPieceSquares(p, x, y, m).split(",");
-	for (var i = 0, imax = squares.length; i < imax; i ++) { 
+	let squares = getPieceSquares(p, x, y, m).split(",");
+	for (let i = 0, imax = squares.length; i < imax; i ++) { 
 		if ( 
 			$('#board').find(".square[id='" + squares[i] + "']").length < 1 ||  
 			$('#board').find(".square[id='" + squares[i] + "'][piece-id!='" + id +"'][class*='piece']").length > 0
@@ -132,7 +132,7 @@ function canMove(p, x, y, m, id) {
 }
 
 function getPieceSquares(p, x, y, m) { 
-	var squares = "";
+	let squares = "";
 	
 	squares += "s-" + y + "-" + x; squares += ",";
 	if (p === 1) { 
