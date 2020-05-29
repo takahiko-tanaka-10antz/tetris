@@ -93,6 +93,7 @@
         }
 
         function startOneGame() {
+            playThemeSound();
             GAME_SPECIAL_AUTHORIZED = true;
             clearMessage();
             launchOnePiece();
@@ -137,7 +138,6 @@
                 ENTER_NAME_TIMER = setInterval('blinkName()', ENTER_NAME_DELAY);
             } else {
                 GAME_START_TIMER = setInterval('blinkStart()', GAME_START_DELAY);
-                playThemeSound();
             }
         }
 

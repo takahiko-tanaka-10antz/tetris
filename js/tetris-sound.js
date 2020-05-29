@@ -51,8 +51,6 @@ function unmuteAllSound() {
 	}
 }
 
-
-
 function playDropSound() { 
 	if ( isAvailableSound() ) { 
 		ROTATE_SOUND.stop();
