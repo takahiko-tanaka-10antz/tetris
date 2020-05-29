@@ -8,7 +8,6 @@
 * jquery
 
 ### 対応ブラウザ
-* safari
 * chrome
 
 ## プレイ方法
